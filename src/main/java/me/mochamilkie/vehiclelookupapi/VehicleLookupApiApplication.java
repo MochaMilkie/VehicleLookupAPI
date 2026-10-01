@@ -8,6 +8,7 @@ public class VehicleLookupApiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VehicleLookupApiApplication.class, args);
+        Controller controller = new Controller();
     }
 
 }
