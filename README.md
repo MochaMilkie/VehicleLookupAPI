@@ -8,7 +8,7 @@ A REST API for looking up vehicle details by VIN, built with Spring Boot.
 - Clear JSON error responses (400 for invalid VINs, 404 when not found)
 
 ## Tech stack
-- Java 21
+- Java 25
 - Spring Boot
 - Maven
 - JUnit 5 and MockMvc
@@ -16,7 +16,7 @@ A REST API for looking up vehicle details by VIN, built with Spring Boot.
 ## Getting started
 
 ### Requirements
-- JDK 21 or newer
+- JDK 25 or newer
 - Maven (or use the included `./mvnw` wrapper)
 
 ### Run the app
@@ -46,6 +46,8 @@ curl http://localhost:8080/vehicles/1HGCM82633A004352
   "make": "Honda",
   "model": "Accord",
   "year": 2003
+  "fuel type": Gasoline
+  "Engine Size": 2.5L
 }
 ```
 
