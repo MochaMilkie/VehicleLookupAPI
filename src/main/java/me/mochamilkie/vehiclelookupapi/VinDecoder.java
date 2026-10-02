@@ -1,5 +1,6 @@
 package me.mochamilkie.vehiclelookupapi;
 
+import me.mochamilkie.vehiclelookupapi.Exceptions.VinNotFoundException;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
