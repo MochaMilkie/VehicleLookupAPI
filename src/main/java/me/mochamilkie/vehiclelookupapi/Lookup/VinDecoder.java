@@ -1,12 +1,9 @@
-package me.mochamilkie.vehiclelookupapi;
+package me.mochamilkie.vehiclelookupapi.Lookup;
 
 import me.mochamilkie.vehiclelookupapi.Exceptions.VinNotFoundException;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import java.lang.reflect.Array;
-import java.util.Map;
 @Service
 public class VinDecoder {
     private final RestClient restClient;
@@ -23,7 +20,7 @@ public class VinDecoder {
         if (response == null || response.results().isEmpty()) {
             throw new VinNotFoundException(vin);
         }
-        NhtsaResult r = response.results().get(0);
+        NhtsaResult r = response.results().getFirst();
         if (r.make() == null || r.make().isBlank()) {
             throw new VinNotFoundException(vin);
         }
