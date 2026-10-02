@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FleetStorage {
-    Map<String, VehicleDetails> storage = new HashMap();
+    Map<String, VehicleDetails> storage = new HashMap<>();
 
     public FleetStorage() {
 
@@ -36,6 +36,7 @@ public class FleetStorage {
 
     }
     public void refreshVehicleDetailsFromStorage(String vin, VehicleDetails vehicleDetails){
+
     }
     public void refreshVehicleDetailsFromNHTSA(String vin){
         VinDecoder vinDecoder = new VinDecoder(RestClient.builder());
