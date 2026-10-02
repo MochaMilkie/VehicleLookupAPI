@@ -15,7 +15,7 @@ class VehicleLookupApiApplicationTests {
         Controller controller = new Controller();
         //Preverified vin to make sure decoder is working on compile
         VehicleDetails vehicleDetails = controller.getByVin("1YVHZ8DHXC5M26142");
-        int expectedYear = 2012;
+        String expectedYear = "2012";
         Assertions.assertEquals(expectedYear, vehicleDetails.year());
         String expectedMake = "MAZDA";
         Assertions.assertEquals(expectedMake, vehicleDetails.make());
