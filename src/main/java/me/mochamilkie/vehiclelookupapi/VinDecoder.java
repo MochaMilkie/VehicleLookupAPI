@@ -11,14 +11,14 @@ import java.util.Map;
 public class VinDecoder {
     private final RestClient restClient;
     public VinDecoder(RestClient.Builder builder) {
-        this.restClient = builder.baseUrl("https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/").build();
+        this.restClient = builder.baseUrl("https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues").build();
     }
 
     private VehicleDetails vehicleDetails;
 
     public void decode(String vin) {
 
-        NhtsaResponse response = restClient.get().uri("/vehicles/DecodeVinValues/{vin}?format=json", vin)
+        NhtsaResponse response = restClient.get().uri("/{vin}?format=json", vin)
                 .retrieve().body(NhtsaResponse.class);
         if (response == null || response.results().isEmpty()) {
             throw new VinNotFoundException(vin);
