@@ -8,7 +8,7 @@ public record NhtsaResult(
         @JsonProperty("Make") String make,
         @JsonProperty("Model") String model,
         @JsonProperty("ModelYear") String year,
-        @JsonProperty("FuelPrimaryType") String fuelType,
+        @JsonProperty("FuelTypePrimary") String fuelType,
         @JsonProperty("DisplacementL") String engineSize,
         @JsonProperty("ErrorCode") String errorCode){
     
