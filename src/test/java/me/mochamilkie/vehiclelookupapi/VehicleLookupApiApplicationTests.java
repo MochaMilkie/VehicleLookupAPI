@@ -16,11 +16,11 @@ class VehicleLookupApiApplicationTests {
         //Preverified vin to make sure decoder is working on compile
         VehicleDetails vehicleDetails = controller.getByVin("1YVHZ8DHXC5M26142");
         int expectedYear = 2012;
-        Assertions.assertEquals(expectedYear, vehicleDetails.getYear());
+        Assertions.assertEquals(expectedYear, vehicleDetails.year());
         String expectedMake = "MAZDA";
-        Assertions.assertEquals(expectedMake, vehicleDetails.getMake());
+        Assertions.assertEquals(expectedMake, vehicleDetails.make());
         String expectedModel = "Mazda6";
-        Assertions.assertEquals(expectedModel, vehicleDetails.getModel());
+        Assertions.assertEquals(expectedModel, vehicleDetails.model());
 
 
     }
