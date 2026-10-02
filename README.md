@@ -45,9 +45,9 @@ curl http://localhost:8080/vehicles/1HGCM82633A004352
   "vin": "1HGCM82633A004352",
   "make": "Honda",
   "model": "Accord",
-  "year": 2003
-  "fuel type": Gasoline
-  "Engine Size": 2.5L
+  "year": "2003",
+  "fuel type": "Gasoline",
+  "Engine Size": "2.5L"
 }
 ```
 
