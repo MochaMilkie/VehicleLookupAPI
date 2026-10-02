@@ -11,6 +11,8 @@ public class Controller {
     @GetMapping("/vehicles")
     public VehicleDetails getByVin(@RequestParam String vin) {
         return new VehicleDetails(vin, "Test Make", "Test Model", 9999, "Test Fuel Type", "Test Engine");
+
+        //return the newly parsed data.
     }
 
 }
