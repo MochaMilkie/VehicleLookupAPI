@@ -1,14 +1,12 @@
 package me.mochamilkie.vehiclelookupapi;
 
+import me.mochamilkie.vehiclelookupapi.Lookup.VehicleDetails;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestReporter;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Map;
-
 @SpringBootTest
-class VehicleLookupApiApplicationTests {
+class VehicleLookupApiTest{
 
     @Test
     void contextLoads() {
