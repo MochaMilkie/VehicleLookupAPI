@@ -8,7 +8,7 @@ public record VehicleDetails(String vin, String make, String model, String year,
                 return new VehicleDetails(vin,
 
                         o.make != null ? o.make : make,
-                        o.model != null ? o.make : make,
+                        o.model != null ? o.model : model,
                         o.year != null ? o.year : year,
                         o.fuelType != null ? o.fuelType :fuelType,
                         o.engineSize != null ? o.engineSize : engineSize);
