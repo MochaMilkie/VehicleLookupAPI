@@ -8,6 +8,10 @@ class VehicleLookupApiApplicationTests {
 
     @Test
     void contextLoads() {
+        Controller controller = new Controller();
+        controller.getByVin(String.valueOf(000000));
+        assert true();
+
     }
 
 }
