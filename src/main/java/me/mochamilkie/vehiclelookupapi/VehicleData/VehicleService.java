@@ -1,11 +1,9 @@
 package me.mochamilkie.vehiclelookupapi.VehicleData;
 
 import jakarta.annotation.Nullable;
-import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidVinException;
 import me.mochamilkie.vehiclelookupapi.VinDecoder.NHTSAClient;
 import me.mochamilkie.vehiclelookupapi.VinDecoder.NHTSAResult;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
 
 import java.time.Year;
 

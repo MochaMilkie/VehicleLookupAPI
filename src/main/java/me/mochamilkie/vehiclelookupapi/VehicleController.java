@@ -1,6 +1,5 @@
 package me.mochamilkie.vehiclelookupapi;
 
-import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidVinException;
 import me.mochamilkie.vehiclelookupapi.VehicleData.VIN;
 import me.mochamilkie.vehiclelookupapi.VehicleData.Vehicle;
 import me.mochamilkie.vehiclelookupapi.VehicleData.VehicleService;
