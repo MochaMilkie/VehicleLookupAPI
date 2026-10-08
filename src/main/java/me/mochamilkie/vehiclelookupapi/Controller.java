@@ -11,7 +11,7 @@ import org.springframework.web.client.RestClient;
 @RestController
 @RequestMapping
 public class Controller {
-    @GetMapping("/vehicles")
+    @GetMapping("/vin")
     public VehicleDetails getByVin(@RequestParam String vin) {
         //return new VehicleDetails(vin, "Test Make", "Test Model", 9999, "Test Fuel Type", "Test Engine");
         VinDecoder vinDecoder = new VinDecoder(RestClient.builder());
