@@ -10,32 +10,41 @@ import java.util.Map;
 
 public class FleetStorage {
     Map<String, VehicleDetails> storage = new HashMap<>();
+    VehicleDetails dummyVehicle = new VehicleDetails(null,  null,  null, null, null, null);
 
     public FleetStorage() {
 
     }
-    public void loadVehicleListFromStorage(){
+    public VehicleDetails loadVehicleFromCache(String vin){
+        VehicleDetails vehicleDetails = storage.getOrDefault(vin, dummyVehicle);
+        if(vehicleDetails == dummyVehicle || vehicleDetails == null) {
+            throw new VehicleNotInFleetException();
+        }
+        return vehicleDetails;
+    }
+    public void loadVehicleListFromStorage(String vin){
         //Load vehicle list from SQL to local map for caching and reduced SQL throughput
+
     }
     public void addVehicleToFleet(String vin, VehicleDetails vehicleDetails){
         //Figure out how to take user input and apply it to the overrides.
         VehicleDetails manual = new VehicleDetails(null, null, null,null,null,null);
 
         VehicleDetails complete = vehicleDetails.withOverrides(manual);
+        if(storage.containsKey(vin)){
+            throw new VehicleAlreadyInFleetException();
+        }
         storage.putIfAbsent(vin, complete);
         //database save as well
 
     }
-    public void editVehicleDetailsFromStorage(String vin, VehicleDetails vehicleDetails){
+    public void editVehicleDetailsFromCache(String vin, VehicleDetails vehicleDetails){
         VehicleDetails stored = storage.get(vin);
         if(stored == null){
             throw new VehicleNotInFleetException();
         }
         VehicleDetails complete = stored.withOverrides(vehicleDetails);
         storage.replace(vin, complete);
-
-    }
-    public void refreshVehicleDetailsFromStorage(String vin, VehicleDetails vehicleDetails){
 
     }
     public void refreshVehicleDetailsFromNHTSA(String vin){
@@ -47,5 +56,14 @@ public class FleetStorage {
 
         storage.putIfAbsent(vin, complete);
         //sql save
+    }
+    public void removeVehicleFromFleet(String vin){
+        if(storage.containsKey(vin)){
+            throw new VehicleNotInFleetException();
+        }
+        storage.remove(vin);
+    }
+    public Map<String, VehicleDetails> getStorage() {
+        return storage;
     }
 }
