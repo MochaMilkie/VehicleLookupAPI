@@ -7,7 +7,7 @@ import java.time.Year;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record NHTSAResult(
-        @JsonProperty("year") Year year,
-        @JsonProperty("make") String make,
-        @JsonProperty("model") String model) {
+        @JsonProperty("ModelYear") Year year,
+        @JsonProperty("Make") String make,
+        @JsonProperty("Model") String model) {
 }
