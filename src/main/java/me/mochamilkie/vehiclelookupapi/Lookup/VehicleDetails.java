@@ -1,9 +1,12 @@
 package me.mochamilkie.vehiclelookupapi.Lookup;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public record VehicleDetails(String vin, String make, String model, String year, String fuelType, String engineSize) {
+public record VehicleDetails(@JsonProperty String vin, @JsonProperty String make, @JsonProperty
+    String model,@JsonProperty String year,@JsonProperty String fuelType,@JsonProperty String engineSize) {
     public VehicleDetails withOverrides(VehicleDetails o){
                 return new VehicleDetails(vin,
 
