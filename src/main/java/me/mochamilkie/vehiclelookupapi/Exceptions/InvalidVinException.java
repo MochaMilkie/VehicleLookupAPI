@@ -1,7 +1,9 @@
 package me.mochamilkie.vehiclelookupapi.Exceptions;
 
-public class InvalidVinException extends RuntimeException{
-    public InvalidVinException(String vin){
-        super("Invalid VIN: " + vin);
+import me.mochamilkie.vehiclelookupapi.VehicleData.VIN;
+
+public class InvalidVinException extends RuntimeException {
+    public InvalidVinException(VIN vin) {
+        super(vin.vin() + " is not a valid VIN");
     }
 }
