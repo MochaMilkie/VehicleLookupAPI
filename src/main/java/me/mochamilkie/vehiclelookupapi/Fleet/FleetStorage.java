@@ -6,6 +6,7 @@ import me.mochamilkie.vehiclelookupapi.Lookup.VinDecoder;
 import org.springframework.web.client.RestClient;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FleetStorage {
@@ -28,15 +29,10 @@ public class FleetStorage {
     }
     public void addVehicleToFleet(String vin, VehicleDetails vehicleDetails){
         //Figure out how to take user input and apply it to the overrides.
-        VehicleDetails manual = new VehicleDetails(null, null, null,null,null,null);
-
-        VehicleDetails complete = vehicleDetails.withOverrides(manual);
-        if(storage.containsKey(vin)){
-            throw new VehicleAlreadyInFleetException();
+        List<String> list = vehicleDetails.missingFields();
+        if(list.isEmpty()){
+            throw new MissingDetailsException();
         }
-        storage.putIfAbsent(vin, complete);
-        //database save as well
-
     }
     public void editVehicleDetailsFromCache(String vin, VehicleDetails vehicleDetails){
         VehicleDetails stored = storage.get(vin);
