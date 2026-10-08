@@ -1,19 +1,26 @@
 package me.mochamilkie.vehiclelookupapi.UserInteractions;
 
+import me.mochamilkie.vehiclelookupapi.ErrorResponses;
+import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidVehicleSetupException;
+import me.mochamilkie.vehiclelookupapi.Exceptions.MissingDetailsException;
 import me.mochamilkie.vehiclelookupapi.Exceptions.VehicleAlreadyInFleetException;
 import me.mochamilkie.vehiclelookupapi.Exceptions.VehicleNotInFleetException;
 import me.mochamilkie.vehiclelookupapi.Fleet.FleetStorage;
 import me.mochamilkie.vehiclelookupapi.Lookup.VehicleDetails;
 import me.mochamilkie.vehiclelookupapi.Lookup.VinDecoder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
 
+import java.util.List;
 import java.util.Map;
 
+@RestController
+@RequestMapping
 public class UserInteractionsService {
-    private final FleetStorage fleetStorage;
+    private FleetStorage fleetStorage = new FleetStorage();
 
-    public UserInteractionsService(FleetStorage fleetStorage) {
-        this.fleetStorage = fleetStorage;
+    public UserInteractionsService() {
     }
 
     public VehicleDetails decodeVin(String vin) {
@@ -22,22 +29,45 @@ public class UserInteractionsService {
         return decoder.getVehicleDetails();
     }
 
-    public boolean addVinToFleet(String vin, VehicleDetails vehicleDetails) {
+    public ErrorResponses addVinToFleet(String vin, VehicleDetails vehicleDetails) {
         try {
             fleetStorage.addVehicleToFleet(vin, vehicleDetails);
         } catch (VehicleAlreadyInFleetException e) {
-            return false;
+            return ErrorResponses.VEHICLEALREADYINFLEET;
         }
-        return true;
+        catch(MissingDetailsException e) {
+            summonMissingDetailsDialog(vin, vehicleDetails);
+            return ErrorResponses.MISSINGVEHICLEDETAILS;
+        }
+        return ErrorResponses.NOERROR;
+    }
+    public void summonMissingDetailsDialog(String vin, VehicleDetails vehicleDetails) {
+        List<String> list = vehicleDetails.missingFields();
+        if(list.isEmpty())
+            return;
+        if(list.contains("vin")){
+            throw new InvalidVehicleSetupException();
+        }
+        boolean missingMake = list.contains("make");
+        boolean missingModel = list.contains("model");
+        boolean missingYear  = list.contains("year");
+        boolean missingFuelType  = list.contains("fuelType");
+        boolean missingEngineSize  = list.contains("engineSize");
+        if(missingMake){
+
+        }
+
     }
 
-    public boolean removeVinFromFleet(String vin) {
+    //String vin, String make, String model, String year, String fuelType, String engineSize
+
+    public ErrorResponses removeVinFromFleet(String vin) {
         try {
             fleetStorage.removeVehicleFromFleet(vin);
         } catch (VehicleAlreadyInFleetException e) {
-            return false;
+            return ErrorResponses.VEHICLEALREADYINFLEET;
         }
-        return true;
+        return ErrorResponses.NOERROR;
     }
 
     public Map<String, VehicleDetails> listVehicles() {
