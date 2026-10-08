@@ -7,5 +7,13 @@ public record Vehicle(
         Year year,
         String make,
         String model) {
+    public Vehicle vechileWithOverrides(VehicleOverrides o) {
 
+        return new Vehicle(
+                VIN,
+                o.year() != null ? o.year() : year,
+                o.make() != null ? o.make() : make,
+                o.model() != null ? o.model() : model);
+
+    }
 }
