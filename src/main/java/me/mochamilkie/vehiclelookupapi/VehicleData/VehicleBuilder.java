@@ -11,6 +11,6 @@ public class VehicleBuilder {
         return new Vehicle(vin, nr.year(), nr.make(), nr.model());
     }
     public Vehicle buildVehicleWithOverrides(Vehicle originalVehicle, VehicleOverrides overrides) {
-        return originalVehicle.vechileWithOverrides(overrides);
+        return originalVehicle.vehicleWithOverrides(overrides);
     }
 }

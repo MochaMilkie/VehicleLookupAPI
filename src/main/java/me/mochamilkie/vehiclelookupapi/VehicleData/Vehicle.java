@@ -7,7 +7,7 @@ public record Vehicle(
         Year year,
         String make,
         String model) {
-    public Vehicle vechileWithOverrides(VehicleOverrides o) {
+    public Vehicle vehicleWithOverrides(VehicleOverrides o) {
 
         return new Vehicle(
                 VIN,
