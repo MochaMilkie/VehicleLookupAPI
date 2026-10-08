@@ -3,10 +3,11 @@ package me.mochamilkie.vehiclelookupapi.VinDecoder;
 import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidResponseFromNHTSAException;
 import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidVinException;
 import me.mochamilkie.vehiclelookupapi.VehicleData.VIN;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
-
+@Component
 public class NHTSAClient {
     private final RestClient restClient;
 
@@ -15,7 +16,6 @@ public class NHTSAClient {
     }
 
     public NHTSAResult decodeVin(VIN vin){
-        if(!vin.validateVIN()) throw new InvalidVinException(vin);
         NHTSAResponse response = restClient.get().uri("/{vin}?format=json", vin.vin()).retrieve().body(NHTSAResponse.class);
 
         if(response == null) throw new InvalidResponseFromNHTSAException();

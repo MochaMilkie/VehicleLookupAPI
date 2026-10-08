@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 public class VehicleController {
-    private VehicleService vehicleService;
-    public VehicleController() {
-        this.vehicleService = new VehicleService();
+    private final VehicleService vehicleService;
+    public VehicleController(VehicleService vehicleService) {
+        this.vehicleService = vehicleService;
     }
     @GetMapping("/vin-decoder")
     public Vehicle decodeVIN(@RequestParam String vin) {
