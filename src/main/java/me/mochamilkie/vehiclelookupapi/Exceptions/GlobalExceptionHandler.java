@@ -16,6 +16,6 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(InvalidResponseFromNHTSAException.class)
     public ResponseEntity<ErrorResponse> handleInvalidResponseFromNHTSAException(InvalidResponseFromNHTSAException e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse(ErrorCodes.INVALID_NHTSA_RESPONSE, e.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(new ErrorResponse(ErrorCodes.INVALID_NHTSA_RESPONSE, e.getMessage()));
     }
 }
