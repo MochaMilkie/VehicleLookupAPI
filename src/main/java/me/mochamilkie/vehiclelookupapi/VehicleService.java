@@ -12,9 +12,9 @@ import org.springframework.web.client.RestClient;
 
 import java.time.Year;
 
-public class VehicleController {
+public class VehicleService {
     VehicleBuilder vehicleBuilder;
-    public VehicleController() {
+    public VehicleService() {
 
     }
     public Vehicle createVehicleFromNHTSA(VIN vin) {
