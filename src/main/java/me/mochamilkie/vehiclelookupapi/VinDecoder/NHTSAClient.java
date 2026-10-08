@@ -18,8 +18,8 @@ public class NHTSAClient {
         if(!vin.validateVIN()) throw new InvalidVinException(vin);
         NHTSAResponse response = restClient.get().uri("/{vin}?format=json", vin.vin()).retrieve().body(NHTSAResponse.class);
 
-        //Fill this when we decide how to retrieve this response.
-        if(response == null) throw new InvalidResponseFromNHTSAException("");
+        if(response == null) throw new InvalidResponseFromNHTSAException();
+        if(response.results() == null) throw new InvalidResponseFromNHTSAException();
 
         return response.results().getFirst();
     }
