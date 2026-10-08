@@ -1,8 +1,10 @@
 package me.mochamilkie.vehiclelookupapi.VehicleData;
 
+import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidVinException;
+
 public record VIN(String vin) {
-    public boolean validateVIN() {
-        return vin.matches("^[A-HJ-NPR-Z0-9]{17}$");
-        //regex is hard still, needed help here
+    public VIN{
+        if (vin == null || !vin.matches("^[A-HJ-NPR-Z0-9]{17}$"))
+            throw new InvalidVinException(this);
     }
 }

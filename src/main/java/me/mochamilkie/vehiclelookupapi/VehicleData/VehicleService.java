@@ -15,7 +15,6 @@ public class VehicleService {
 
     }
     public Vehicle createVehicleFromNHTSA(VIN vin) {
-        if(!vin.validateVIN()) throw new InvalidVinException(vin);
         NHTSAClient nhtsaClient = new NHTSAClient(RestClient.builder());
         NHTSAResult nhtsaResult = nhtsaClient.decodeVin(vin);
         return vehicleBuilder.buildVehicleFromNHTSA(vin, nhtsaResult);

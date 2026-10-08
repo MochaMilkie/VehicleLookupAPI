@@ -19,7 +19,6 @@ public class VehicleController {
     @GetMapping("/vin-decoder")
     public Vehicle decodeVIN(@RequestParam String vin) {
         VIN vin1 =  new VIN(vin);
-        if(!vin1.validateVIN()) throw new InvalidVinException(vin1);
         return vehicleService.createVehicleFromNHTSA(vin1);
     }
 }
