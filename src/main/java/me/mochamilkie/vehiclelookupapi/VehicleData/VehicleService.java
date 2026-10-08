@@ -1,11 +1,7 @@
-package me.mochamilkie.vehiclelookupapi;
+package me.mochamilkie.vehiclelookupapi.VehicleData;
 
 import jakarta.annotation.Nullable;
 import me.mochamilkie.vehiclelookupapi.Exceptions.InvalidVinException;
-import me.mochamilkie.vehiclelookupapi.VehicleData.VIN;
-import me.mochamilkie.vehiclelookupapi.VehicleData.Vehicle;
-import me.mochamilkie.vehiclelookupapi.VehicleData.VehicleBuilder;
-import me.mochamilkie.vehiclelookupapi.VehicleData.VehicleOverrides;
 import me.mochamilkie.vehiclelookupapi.VinDecoder.NHTSAClient;
 import me.mochamilkie.vehiclelookupapi.VinDecoder.NHTSAResult;
 import org.springframework.web.client.RestClient;
