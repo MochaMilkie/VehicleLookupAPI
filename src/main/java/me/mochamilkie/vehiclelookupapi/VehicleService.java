@@ -15,6 +15,7 @@ import java.time.Year;
 public class VehicleService {
     VehicleBuilder vehicleBuilder;
     public VehicleService() {
+        vehicleBuilder = new VehicleBuilder();
 
     }
     public Vehicle createVehicleFromNHTSA(VIN vin) {

@@ -19,7 +19,7 @@ public class VehicleStorageTests {
         NHTSAResult mockResult = new NHTSAResult(Year.of(2006), "FORD", "F150");
         VehicleOverrides overrides = new VehicleOverrides(Year.of(2020), "Subaru", "Outback");
         Vehicle expectedOverrides = new Vehicle(vin, Year.of(2020), "Subaru", "Outback");
-        Assertions.assertEquals(vehicleBuilder.buildVehicleFromNHTSA(vin, mockResult), expectedVehicle);
-        Assertions.assertEquals(vehicleBuilder.buildVehicleWithOverrides(expectedVehicle, overrides), expectedOverrides);
+        Assertions.assertEquals(expectedVehicle, vehicleBuilder.buildVehicleFromNHTSA(vin, mockResult));
+        Assertions.assertEquals(expectedOverrides, vehicleBuilder.buildVehicleWithOverrides(expectedVehicle, overrides));
     }
 }
